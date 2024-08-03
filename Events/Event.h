@@ -10,5 +10,11 @@ public:
      *
      * @return - the description of the event
     */
-    string getDescription() const;
+    //CHECK IF ADDING VIRTUAL IS OK:
+    virtual string getDescription() const;
+    virtual ~Event() = default;
+    explicit Event(const char* eventType);
+
+protected:
+    string m_eventType;
 };

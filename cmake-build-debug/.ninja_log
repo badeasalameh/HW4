@@ -1,0 +1,11 @@
+# ninja log v5
+2	395	7443534671166257	build.ninja	3b643e041a333cf2
+18	1975	7443431727925922	CMakeFiles/HW4.dir/main.cpp.obj	88c196fd37f3706
+29	2011	7443431728042862	CMakeFiles/HW4.dir/Players/Warrior.cpp.obj	816cdd3e9e8347ed
+45	1996	7443431727956343	CMakeFiles/HW4.dir/Players/Job.cpp.obj	cd7d229a88f77594
+56	2027	7443431728210697	CMakeFiles/HW4.dir/Players/Player.cpp.obj	8b081cac5aa1998c
+2	2026	7443431728095666	CMakeFiles/HW4.dir/Utilities.cpp.obj	84f72a45978b6b78
+9	2028	7443431728032921	CMakeFiles/HW4.dir/MatamStory.cpp.obj	cce24ac76ada8d1d
+2012	2602	7443431734534347	CMakeFiles/HW4.dir/Players/Magician.cpp.obj	dd838698f1a3f005
+1979	2612	7443431734584855	CMakeFiles/HW4.dir/Players/Character.cpp.obj	9241a3c20b5e0835
+1996	2616	7443431734641278	CMakeFiles/HW4.dir/Players/Archer.cpp.obj	2586ccb6e495d5c9

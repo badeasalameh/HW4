@@ -20,6 +20,10 @@ public:
     ~Player() = default;
 
     int getCombatPower() const;
+
+    string getJob() const;
+
+    string getCharacter() const;
     ///////////////////////////////////////////////////////
     /**
      * Gets the description of the player

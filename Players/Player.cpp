@@ -92,3 +92,13 @@ string Player :: getDescription() const
     return  m_name + ", " + m_job -> getJob() + " with " + m_character -> getCharacter() +
     " (level " + to_string(m_level) + ", " + "force " + to_string(m_force) + ')';
 }
+
+string Player :: getJob() const
+{
+    return m_job -> getJob();
+}
+
+string Player :: getCharacter() const
+{
+    return m_character -> getCharacter();
+}

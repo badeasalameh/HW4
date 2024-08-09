@@ -102,3 +102,98 @@ string Player :: getCharacter() const
 {
     return m_character -> getCharacter();
 }
+
+bool operator<(const Player& p1 , const Player& p2)
+{
+   if(p1.getLevel() > p2.getLevel())
+   {
+       return true;
+   }
+   else if(p1.getLevel() == p2.getLevel())
+   {
+       if(p1.getCoins() > p2.getCoins())
+       {
+           return true;
+       }
+       else if(p1.getCoins() == p2.getCoins())
+       {
+           if(p1.getName() > p2.getName())
+           {
+               return true;
+           }
+       }
+   }
+   return false;
+}
+
+bool operator<(const shared_ptr<Player>& p1 , const shared_ptr<Player>& p2)
+{
+    return (*p1 < *p2);
+}
+
+void Player :: alterForce(int change)
+{
+    m_force += change;
+}
+
+bool Player :: pay(int amount)
+{
+    if(m_coins >= amount)
+    {
+        m_coins -= amount;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void Player :: addHealth(int healthAdded)
+{
+    if(m_currHP + healthAdded <= m_maxHP)
+    {
+        m_currHP += healthAdded;
+    }
+    else
+    {
+        m_currHP = m_maxHP;
+    }
+}
+
+void Player :: takeDamage(int damageTaken)
+{
+    if(m_currHP - damageTaken >= MINIMAL_HP)
+    {
+        m_currHP -= damageTaken;
+    }
+    else
+    {
+        m_currHP = MINIMAL_HP;
+    }
+}
+
+int Player :: getMaxHP() const
+{
+    return m_maxHP;
+}
+
+bool Player :: isArcher() const
+{
+    return (getJob() == "Archer");
+}
+
+bool Player :: isWarrior() const
+{
+    return (getJob() == "Warrior");
+}
+
+bool Player :: isMagician() const
+{
+    return (getJob() == "Magician");
+}
+
+void Player :: takeLoot(int loot)
+{
+    m_coins += loot;
+}

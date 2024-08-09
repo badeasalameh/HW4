@@ -1,8 +1,6 @@
 #ifndef HW4_ENCOUNTER_H
 #define HW4_ENCOUNTER_H
 
-#define UNINITIALIZED (-1)
-
 #include "Event.h"
 
 class Encounter : public Event{
@@ -23,9 +21,9 @@ protected:
     int m_damage;
 
 private:
-    static const int UNINITIALIZED_COMBAT_POWER = UNINITIALIZED;
-    static const int UNINITIALIZED_LOOT = UNINITIALIZED;
-    static const int UNINITIALIZED_DAMAGE = UNINITIALIZED;
+    static const int UNINITIALIZED_COMBAT_POWER = -1;
+    static const int UNINITIALIZED_LOOT = -1;
+    static const int UNINITIALIZED_DAMAGE = -1;
 };
 
 

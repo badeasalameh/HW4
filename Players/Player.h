@@ -24,6 +24,21 @@ public:
     string getJob() const;
 
     string getCharacter() const;
+
+    void alterForce(int change);
+
+    bool pay(int amount);
+
+    void addHealth(int healthAdded);
+    void takeDamage(int damage);
+
+    int getMaxHP() const;
+
+    bool isWarrior() const;
+    bool isArcher() const;
+    bool isMagician() const;
+
+    void takeLoot(int loot);
     ///////////////////////////////////////////////////////
     /**
      * Gets the description of the player
@@ -67,7 +82,7 @@ public:
     */
     int getCoins() const;
 
-protected:
+private:
     string m_name;
     int m_level;
     int m_force;
@@ -87,4 +102,9 @@ protected:
 
     static const int INITIAL_COINS = 10;
     static const int INITIAL_ARCHER_COINS = 20;
+
+    static const int MINIMAL_HP = 0;
+    ////////////////////////////////////
+    friend bool operator<(const Player& p1 , const Player& p2);
 };
+bool operator<(const shared_ptr<Player>& p1 , const shared_ptr<Player>& p2);

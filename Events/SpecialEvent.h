@@ -7,6 +7,7 @@ class SpecialEvent : public Event{
 public:
     explicit SpecialEvent(const char* specialEventType);
     string getSpecialEventType() const;
+    virtual string getDescription() const override;
 
 private:
     string m_specialEventType;

@@ -1,3 +1,3 @@
 #include "Responsible.h"
-Responsible :: Responsible() : Character("RESPONSIBLE")
+Responsible :: Responsible() : Character("Responsible")
 {}

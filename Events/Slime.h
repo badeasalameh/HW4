@@ -7,6 +7,8 @@ class Slime : public Encounter{
 public:
     Slime();
 
+    string getDescription() const override;
+
 private:
     static const int SLIME_COMBAT_POWER = 12;
     static const int SLIME_LOOT = 5;

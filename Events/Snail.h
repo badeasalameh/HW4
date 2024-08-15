@@ -7,6 +7,8 @@ class Snail : public Encounter{
 public:
     Snail();
 
+    string getDescription() const override;
+
 private:
     static const int SNAIL_COMBAT_POWER = 5;
     static const int SNAIL_LOOT = 2;

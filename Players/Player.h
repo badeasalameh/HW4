@@ -14,7 +14,7 @@ using std::string;
 class Player {
 public:
     //ADDED METHODS:
-    Player(const char* name , unique_ptr<Job> job ,unique_ptr<Character> character , int level = INITIAL_LEVEL ,
+    Player(string name , unique_ptr<Job> job ,unique_ptr<Character> character , int level = INITIAL_LEVEL ,
            int force = INITIAL_FORCE , int maxHP = INITIAL_MAX_HP , int coins = INITIAL_COINS);
 
     ~Player() = default;
@@ -39,6 +39,8 @@ public:
     bool isMagician() const;
 
     void takeLoot(int loot);
+
+    void addLevel();
     ///////////////////////////////////////////////////////
     /**
      * Gets the description of the player
@@ -94,6 +96,7 @@ private:
     unique_ptr<Character> m_character;
     ////////////////////////////////////
     static const int INITIAL_LEVEL = 1;
+    static const int LEVEL_ADD = 1;
 
     static const int INITIAL_FORCE = 5;
 
@@ -105,6 +108,6 @@ private:
 
     static const int MINIMAL_HP = 0;
     ////////////////////////////////////
-    friend bool operator<(const Player& p1 , const Player& p2);
+    friend bool operator<(const Player&  , const Player& );
 };
-bool operator<(const shared_ptr<Player>& p1 , const shared_ptr<Player>& p2);
+bool operator<(const shared_ptr<Player>& , const shared_ptr<Player>&);

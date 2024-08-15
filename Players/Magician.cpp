@@ -1,4 +1,4 @@
 #include "Magician.h"
 
-Magician :: Magician() : Job("MAGICIAN")
+Magician :: Magician() : Job("Magician")
 {}

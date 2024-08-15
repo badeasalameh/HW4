@@ -7,6 +7,7 @@ class Balrog : public Encounter{
 public:
     Balrog();
     void balrogCombatPowerIncrease();
+    string getDescription() const override;
 
 private:
     static const int BALROG_COMBAT_POWER = 15;

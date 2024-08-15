@@ -1,5 +1,5 @@
 #include "SolarEclipse.h"
-SolarEclipse :: SolarEclipse() : SpecialEvent("SOLARECLIPSE")
+SolarEclipse :: SolarEclipse() : SpecialEvent("SolarEclipse")
 {}
 
 int SolarEclipse :: getForceBuff()

@@ -5,6 +5,10 @@
 #include <vector>
 #include <set>
 #include <memory>
+#include <fstream>
+#include <sstream>
+#include <deque>
+#include <cctype>
 
 #include "Players/Player.h"
 #include "Players/Archer.h"
@@ -29,6 +33,14 @@
 #define DAMAGE_TAKEN_ON_PLAYER_WIN 10
 #define MAX_LEVEL 10
 #define MIN_HP 0
+
+#define MIN_PACK_MEMBER_NUMBER 2
+#define MIN_NUMBER_OF_EVENTS 2
+#define MAX_NUMBER_OF_PLAYERS 6
+#define MIN_NUMBER_OF_PLAYERS 2
+#define MAX_NAME_LENGTH 15
+#define NUMBER_OF_PLAYER_PARAMETERS 3
+#define MIN_NAME_LENGTH 3
 
 class MatamStory{
 private:
@@ -59,12 +71,17 @@ private:
 
     //////////////////////////////////////////////////////////////
     //ADDED PRIVATE METHODS:
-    vector<shared_ptr<Player>> m_players;
-    vector<shared_ptr<Event>> m_events;
+    deque<shared_ptr<Player>> m_players;
+    deque<shared_ptr<Event>> m_events;
 
     set<shared_ptr<Player>> m_leaderboard;
 
     void updateLeaderboard();
+
+    void putCards(const vector<string>& cardsVector, int* start_index);
+
+    void addCard(const string& cardName);
+
 public:
     /**
      * Constructor of MatamStory class

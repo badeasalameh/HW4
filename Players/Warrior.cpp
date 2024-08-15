@@ -1,4 +1,4 @@
 #include "Warrior.h"
 
-Warrior :: Warrior() : Job("WARRIOR")
+Warrior :: Warrior() : Job("Warrior")
 {}

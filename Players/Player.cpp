@@ -1,61 +1,49 @@
 #include "Player.h"
 
-Player :: Player(const char* name , unique_ptr<Job> job ,unique_ptr<Character> character , int level , int force ,
-                int maxHP , int coins) : m_name(name) , m_job(std::move(job)) , m_character(std::move(character)) ,
-                m_level(level) , m_force(force) , m_maxHP(maxHP) , m_currHP(maxHP) , m_coins(coins)
+#include <utility>
+
+Player :: Player(string name, unique_ptr<Job> job, unique_ptr<Character> character, int level, int force, int maxHP, int coins)
+        : m_name(std::move(name)),
+          m_level(level),
+          m_force(force),
+          m_currHP(maxHP),
+          m_maxHP(maxHP),
+          m_coins(coins),
+          m_job(std::move(job)),
+          m_character(std::move(character))
 {
-    //NAME CHECK:
-    if(m_name.size() > 15)
-    {
-        throw invalid_argument("Name must be 15 characters or less");
-    }
-    for(char letter : m_name)
-    {
-        if(letter == ' ')
-        {
-            throw invalid_argument("Name must not contain spaces");
-        }
-    }
-    ////////////////////////////////////////////
-    //LEVEL CHECK:
-    if(level < 1 || level > 10)
-    {
-        throw invalid_argument("level must be neutral number between 1 and 10");
-    }
-    ///////////////////////////////////////////
-    //FORCE CHECK:
-    if(m_force < 0)
-    {
-        throw invalid_argument("force should be a non - negative number");
-    }
-    //////////////////////////////////////////
-    //HP CHECK:
-    if(m_maxHP <= 0)
-    {
-        throw invalid_argument("maxHP should be a positive number");
-    }
-    //////////////////////////////////////////
-    //COINS CHECK:
-    if(m_coins < 0)
-    {
-        throw invalid_argument("coins should be a non - negative number");
-    }
-    /////////////////////////////////////////
-    if(m_job -> getJob() == "WARRIOR")
-    {
-        m_maxHP = INITIAL_WARRIOR_MAX_HP;
-        m_currHP = m_maxHP;
+    // LEVEL CHECK:
+    if(level < 1 || level > 10) {
+        throw invalid_argument("level must be a neutral number between 1 and 10");
     }
 
-    else if(m_job -> getJob() == "ARCHER")
-    {
+    // FORCE CHECK:
+    if(m_force < 0) {
+        throw invalid_argument("force should be a non-negative number");
+    }
+
+    // HP CHECK:
+    if(m_maxHP <= 0) {
+        throw invalid_argument("maxHP should be a positive number");
+    }
+
+    // COINS CHECK:
+    if(m_coins < 0) {
+        throw invalid_argument("coins should be a non-negative number");
+    }
+
+    if(m_job->getJob() == "Warrior") {
+        m_maxHP = INITIAL_WARRIOR_MAX_HP;
+        m_currHP = m_maxHP;
+    } else if(m_job->getJob() == "Archer") {
         m_coins = INITIAL_ARCHER_COINS;
     }
 }
 
+
 int Player :: getCombatPower() const
 {
-    if(m_job -> getJob() == "WARRIOR")
+    if(m_job -> getJob() == "Warrior")
     {
         return m_force * 2 + m_level;
     }
@@ -90,7 +78,7 @@ int Player :: getCoins() const
 string Player :: getDescription() const
 {
     return  m_name + ", " + m_job -> getJob() + " with " + m_character -> getCharacter() +
-    " (level " + to_string(m_level) + ", " + "force " + to_string(m_force) + ')';
+    " character (level " + to_string(m_level) + ", " + "force " + to_string(m_force) + ')';
 }
 
 string Player :: getJob() const
@@ -103,37 +91,45 @@ string Player :: getCharacter() const
     return m_character -> getCharacter();
 }
 
-bool operator<(const Player& p1 , const Player& p2)
+bool operator<(const Player& player1 , const Player& player2)
 {
-   if(p1.getLevel() > p2.getLevel())
-   {
-       return true;
-   }
-   else if(p1.getLevel() == p2.getLevel())
-   {
-       if(p1.getCoins() > p2.getCoins())
-       {
-           return true;
-       }
-       else if(p1.getCoins() == p2.getCoins())
-       {
-           if(p1.getName() > p2.getName())
-           {
-               return true;
-           }
-       }
-   }
-   return false;
+    if(player1.getLevel() > player2.getLevel())
+    {
+        return true;
+    }
+    else if(player1.getLevel() == player2.getLevel())
+    {
+        if(player1.getCoins() > player2.getCoins())
+        {
+            return true;
+        }
+        else if(player1.getCoins() == player2.getCoins())
+        {
+            //was > :
+            if(player1.getName() < player2.getName())
+            {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
-bool operator<(const shared_ptr<Player>& p1 , const shared_ptr<Player>& p2)
+bool operator<(const shared_ptr<Player>& player1 , const shared_ptr<Player>& player2)
 {
-    return (*p1 < *p2);
+    return (*player1 < *player2);
 }
 
 void Player :: alterForce(int change)
 {
-    m_force += change;
+    if(m_force + change <= 0)
+    {
+        m_force = 0;
+    }
+    else
+    {
+        m_force += change;
+    }
 }
 
 bool Player :: pay(int amount)
@@ -196,4 +192,9 @@ bool Player :: isMagician() const
 void Player :: takeLoot(int loot)
 {
     m_coins += loot;
+}
+
+void Player :: addLevel()
+{
+    m_level += LEVEL_ADD;
 }

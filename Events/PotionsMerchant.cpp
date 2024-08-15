@@ -1,5 +1,5 @@
 #include "PotionsMerchant.h"
-PotionsMerchant :: PotionsMerchant() : SpecialEvent("POTIONSMERCHANT")
+PotionsMerchant :: PotionsMerchant() : SpecialEvent("PotionsMerchant")
 {}
 
 int PotionsMerchant :: getPotionCost()

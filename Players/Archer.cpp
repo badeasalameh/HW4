@@ -1,4 +1,4 @@
 #include "Archer.h"
 
-Archer :: Archer() : Job("ARCHER")
+Archer :: Archer() : Job("Archer")
 {}

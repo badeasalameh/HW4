@@ -1,3 +1,3 @@
 #include "RiskTaking.h"
-RiskTaking :: RiskTaking() : Character("RISKTAKING")
+RiskTaking :: RiskTaking() : Character("RiskTaking")
 {}

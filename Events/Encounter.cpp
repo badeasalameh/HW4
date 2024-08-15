@@ -1,5 +1,5 @@
 #include "Encounter.h"
-Encounter :: Encounter(const char* monster , int combatPower , int loot , int damage) : Event("ENCOUNTER") ,
+Encounter :: Encounter(const char* monster , int combatPower , int loot , int damage) : Event("Encounter") ,
                        m_monster(monster) , m_CombatPower(combatPower) , m_loot(loot) , m_damage(damage)
 {}
 

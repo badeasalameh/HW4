@@ -4,7 +4,7 @@ Balrog :: Balrog() : Encounter("Balrog" , BALROG_COMBAT_POWER , BALROG_LOOT , BA
 
 void Balrog :: balrogCombatPowerIncrease()
 {
-    m_CombatPower += BALROG_COMBAT_POWER_INCREASE;
+    m_combatPower += BALROG_COMBAT_POWER_INCREASE;
 }
 
 string Balrog :: getDescription() const

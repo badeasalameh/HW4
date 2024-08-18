@@ -12,6 +12,9 @@ public:
 private:
     static const int COST = 5;
     static const int EFFECT = 10;
+    virtual int getCombatPower() const override;
+    virtual int getDamage() const override;
+    virtual int getLoot() const override;
 };
 
 

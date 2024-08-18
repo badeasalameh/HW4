@@ -5,6 +5,10 @@
 
 class Event {
 public:
+    Event() = default;
+    virtual int getCombatPower() const = 0;
+    virtual int getDamage() const = 0;
+    virtual int getLoot() const = 0;
     /**
      * Gets the description of the event
      *

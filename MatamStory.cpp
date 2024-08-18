@@ -129,6 +129,7 @@ MatamStory::MatamStory(std::istream& eventsStream, std::istream& playersStream) 
     if (static_cast<int>(tempEventVector.size()) < 2) {
         throw runtime_error("Invalid Events File");
     }
+
     put_cards(tempEventVector, &start_index);
 
     string playerInfo, name, job, character;
@@ -240,10 +241,14 @@ void MatamStory::playTurn(Player& player) {
                 player.alterForce(solarEclipse -> getForceBuff());
                 cout << getSolarEclipseMessage(player , solarEclipse -> getForceBuff()) << endl;
             }
-            else
-            {
-                player.alterForce(solarEclipse -> getForceNerf());
-                cout << getSolarEclipseMessage(player , solarEclipse -> getForceNerf()) << endl;
+            else {
+                if (player.getForce() > 0) {
+                    player.alterForce(solarEclipse->getForceNerf());
+                    cout << getSolarEclipseMessage(player, solarEclipse->getForceNerf()) << endl;
+                }
+                else {
+                    cout << getSolarEclipseMessage(player, 0) << endl;
+                }
             }
         }
 
@@ -352,6 +357,7 @@ void MatamStory::playTurn(Player& player) {
         else if(pack != nullptr)
         {
             //PACK WIN:
+
             if(pack -> getCombatPower() >= player.getCombatPower())
             {
                 player.takeDamage(pack -> getDamage());
@@ -369,17 +375,12 @@ void MatamStory::playTurn(Player& player) {
                 cout << getEncounterWonMessage(player , pack -> getLoot()) << endl;
             }
 
-            vector<shared_ptr<Event>> packMembers = pack -> getPackMembers();
-            for(shared_ptr<Event>& member : packMembers)
-            {
-                if(dynamic_pointer_cast<Balrog>(member))
-                {
-                    pack -> addCombatPower();
+                int amountOfBalrogs[1] = {0} ;
+                recursiveAddPackBalrogCombat(pack,amountOfBalrogs);
+                while(amountOfBalrogs[0] > 0){
+                    pack->addCombatPower();
+                    (amountOfBalrogs[0])--;
                 }
-                else if (dynamic_pointer_cast<Pack>(member)){
-
-                }
-            }
         }
     }
     m_turnIndex++;
@@ -488,6 +489,18 @@ for (const auto& player : leaderBoardSet)
     for (const auto& player : toUpdate)
     {
         leaderBoardSet.insert(player);
+    }
+}
+
+void MatamStory::recursiveAddPackBalrogCombat(shared_ptr<Pack> pack,int* amountOfBalrogs) {
+    vector<shared_ptr<Event>> packMembers = pack -> getPackMembers();
+    for(shared_ptr<Event>& member : packMembers){
+        if(dynamic_pointer_cast<Balrog>(member)) (amountOfBalrogs[0])++;
+        else {
+            shared_ptr<Pack> otherPack = dynamic_pointer_cast<Pack>(member);
+            if(otherPack != nullptr)
+                recursiveAddPackBalrogCombat(otherPack,amountOfBalrogs);
+        }
     }
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

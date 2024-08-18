@@ -11,7 +11,7 @@ public:
 
     string getDescription() const override;
 
-    virtual int getCombatPower() const;
+     virtual int getCombatPower() const;
     int getLoot() const;
     int getDamage() const;
 

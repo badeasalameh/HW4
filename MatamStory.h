@@ -46,11 +46,9 @@ class MatamStory{
 private:
 
     unsigned int m_turnIndex;
-    class isCharacter;
-    class isBehavior;
-//    bool check_players_input(string& playerName,string& playerCharacter,string& playerBehavior);
+
     std::set<shared_ptr<Player>> leaderBoardSet;
-//    int WinnerIdx() const;
+
     /**
      * Playes a single turn for a player
      *
@@ -72,16 +70,14 @@ private:
      *
      * @return - true if the game is over, false otherwise
     */
-        bool isGameOver() const;
-//    void add_player(string& playerName,string& playerCharacter,string& playerBehavior);
+    bool isGameOver() const;
     void add_card(const string& cardName);
     void put_cards(const vector<string>& cardsVector , int* start_index);
     vector<shared_ptr<Event>> pack_input( const vector<string>& cardsVector,vector<shared_ptr<Event>>& packVector,int* start_index,int packSize);
     bool isNumber(const string&);
      vector<shared_ptr<Event>> m_Cards;
-//    vector<shared_ptr<Player>> m_Players;
     deque<shared_ptr<Player>> m_players;
-
+    void recursiveAddPackBalrogCombat(shared_ptr<Pack> pack,int* amountOfBalrogs);
     void updateLeaderboard();
 
 public:

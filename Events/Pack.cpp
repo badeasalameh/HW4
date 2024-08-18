@@ -37,13 +37,6 @@ string Pack :: getDescription() const
             to_string(m_loot) + ", damage " + to_string(m_damage) + ')';
 }
 
-//void Pack :: insertNewMembers(vector<shared_ptr<Encounter>> newMembers)
-//{
-//    for(const shared_ptr<Encounter>& member : newMembers)
-//    {
-//        insertNewMember(member);
-//    }
-//}
 
 void Pack :: addCombatPower()
 {
@@ -51,9 +44,7 @@ void Pack :: addCombatPower()
 }
 
 int Pack::getCombatPower() const {
-    int sum_of_combat_power = 0;
-    for(const auto& it : packVector){
-        sum_of_combat_power += it->getCombatPower();
-    }
-    return sum_of_combat_power;
+    return m_combatPower;
 }
+
+

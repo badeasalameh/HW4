@@ -16,11 +16,11 @@ public:
     }
 private:
     string card;
-    string vaidCards[5] = {"Snail","Slime","Balrog","PotionMerchant","SolarEclipse"};
+    string vaidCards[5] = {"Snail","Slime","Balrog","PotionsMerchant","SolarEclipse"};
 };
 class InvalidCardInput : public std::runtime_error {
 public:
-    InvalidCardInput() : std::runtime_error("Invalid Cards File") {}
+    InvalidCardInput() : std::runtime_error("Invalid Events File") {}
 };
 
 bool MatamStory::isNumber(const string& number) {
@@ -52,7 +52,7 @@ vector<shared_ptr<Event>> MatamStory::pack_input(const vector<string>& cardsVect
                                                  vector<shared_ptr<Event>>& packVector,
                                                  int* start_index,int packSize)
 {
-    while (packSize > 0 && *start_index < cardsVector.size()) {
+    while (packSize > 0 && *start_index < static_cast<int>(cardsVector.size())){
         const std::string& card = cardsVector[*start_index];
         if (card == "Snail") {
             packVector.push_back(std::make_shared<Snail>());
@@ -64,7 +64,7 @@ vector<shared_ptr<Event>> MatamStory::pack_input(const vector<string>& cardsVect
             packVector.push_back(std::make_shared<Balrog>());
             packSize--;
         } else if (card == "Pack") {
-            if (*start_index + 1 >= cardsVector.size() || !isNumber(cardsVector[*start_index + 1])) {
+            if (*start_index + 1 >= static_cast<int>(cardsVector.size()) || !isNumber(cardsVector[*start_index + 1])) {
                 throw InvalidCardInput();
             }
             int new_pack_size = stoi(cardsVector[++(*start_index)]);
@@ -86,20 +86,20 @@ vector<shared_ptr<Event>> MatamStory::pack_input(const vector<string>& cardsVect
 }
 
 void MatamStory::put_cards(const vector<string>& cardsVector, int* start_index) {
-    for (int i = *start_index; i < cardsVector.size() ; i++) {
+    for (int i = *start_index; i < static_cast<int>(cardsVector.size()) ; i++) {
         IsValidCard isValidCard(cardsVector[i]);
         if (isValidCard()) {
             add_card(cardsVector[i]);
             (*start_index)++;
         }
-        else if (cardsVector[i] == "Pack" && i + 1 < cardsVector.size()) {
+        else if (cardsVector[i] == "Pack" && i + 1 < static_cast<int>(cardsVector.size())) {
             if(!isNumber(cardsVector[i + 1])) throw InvalidCardInput();
             int packSize = stoi(cardsVector[i + 1]);
             vector<shared_ptr<Event>> pack_vector;
             *start_index = i + 2;
             Pack pack = Pack(pack_input(cardsVector, pack_vector, start_index, packSize));
             m_Cards.push_back(make_shared<Pack>(pack));
-            i = *start_index;
+            i = *start_index - 1;
         }
         else {
             throw InvalidCardInput();
@@ -375,6 +375,9 @@ void MatamStory::playTurn(Player& player) {
                 if(dynamic_pointer_cast<Balrog>(member))
                 {
                     pack -> addCombatPower();
+                }
+                else if (dynamic_pointer_cast<Pack>(member)){
+
                 }
             }
         }

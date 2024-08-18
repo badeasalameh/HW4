@@ -1,0 +1,233 @@
+* commit 7af64f11d238c3011b3425b6cc868d825da4a199
+| Author: badeasalameh <badeasalameh@campus.technion.ac.il>
+| Date:   Thu Aug 15 19:12:34 2024 +0300
+| 
+|     added methods to some classes
+| 
+|  Events/Balrog.cpp          |   7 +-
+|  Events/Balrog.h            |   1 +
+|  Events/Encounter.cpp       |   2 +-
+|  Events/Event.cpp           |   5 -
+|  Events/Event.h             |   2 +-
+|  Events/Pack.cpp            |  29 ++--
+|  Events/Pack.h              |   9 +-
+|  Events/PotionsMerchant.cpp |   2 +-
+|  Events/Slime.cpp           |   9 +-
+|  Events/Slime.h             |   2 +
+|  Events/Snail.cpp           |   7 +-
+|  Events/Snail.h             |   2 +
+|  Events/SolarEclipse.cpp    |   2 +-
+|  Events/SpecialEvent.cpp    |   7 +-
+|  Events/SpecialEvent.h      |   1 +
+|  MatamGenericTester         |   1 +
+|  MatamStory.cpp             | 361 +++++++++++++++++++++++++++++++++++++++----
+|  MatamStory.h               |  21 ++-
+|  Players/Archer.cpp         |   2 +-
+|  Players/Magician.cpp       |   2 +-
+|  Players/Player.cpp         | 135 ++++++++--------
+|  Players/Player.h           |   9 +-
+|  Players/Responsible.cpp    |   2 +-
+|  Players/RiskTaking.cpp     |   2 +-
+|  Players/Warrior.cpp        |   2 +-
+|  TechnionMatam              |   1 +
+|  26 files changed, 494 insertions(+), 131 deletions(-)
+| 
+* commit bca913f943c30c22b3a0d463aa311332c4c97479
+| Author: badeasalameh <badeasalameh@campus.technion.ac.il>
+| Date:   Fri Aug 9 22:42:52 2024 +0300
+| 
+|     added methods to some classes and did all the methods of the MatamStory class other than the constructor
+| 
+|  Event.h                                           |  14 --
+|  Events/Encounter.h                                |   8 +-
+|  MatamStory.cpp                                    | 226 +++++++++++++++++++-
+|  MatamStory.h                                      |  31 +++
+|  Players/Player.cpp                                |  97 ++++++++-
+|  Players/Player.h                                  |  22 +-
+|  .../Testing/Temporary/LastTest.log                |   4 +-
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +-
+|  8 files changed, 370 insertions(+), 36 deletions(-)
+| 
+* commit 76c23afec20d4855cf81c6a1fd021a10fc3426b5
+| Author: badeasalameh <badeasalameh@campus.technion.ac.il>
+| Date:   Sat Aug 3 14:11:18 2024 +0300
+| 
+|     added getJob() and getCharacter() methods
+| 
+|  Players/Player.cpp | 10 ++++++++++
+|  Players/Player.h   |  4 ++++
+|  2 files changed, 14 insertions(+)
+|   
+| * commit a50701bb9ab559a83c3b7a878a03c1b8360d3d65
+|/| Merge: 428c9fb f879b70
+| | Author: badeasalameh <badeasalameh@campus.technion.ac.il>
+| | Date:   Sat Aug 3 14:00:17 2024 +0300
+| | 
+| |     WIP on main: 428c9fb Badea Updating
+| | 
+| * commit f879b7012679c53a342426063820fbb48fdc137a
+|/  Author: badeasalameh <badeasalameh@campus.technion.ac.il>
+|   Date:   Sat Aug 3 14:00:17 2024 +0300
+|   
+|       index on main: 428c9fb Badea Updating
+| 
+* commit 428c9fbe705a53a85a731b5b0e3f290febc05f90
+| Author: badeasalameh <badeasalameh@campus.technion.ac.il>
+| Date:   Sat Aug 3 13:53:30 2024 +0300
+| 
+|     Badea Updating
+| 
+|  .idea/.gitignore                                  |    8 +
+|  .idea/HW4.iml                                     |    2 +
+|  .idea/misc.xml                                    |    4 +
+|  .idea/modules.xml                                 |    8 +
+|  .idea/vcs.xml                                     |    6 +
+|  CMakeLists.txt                                    |   50 +
+|  Event.h                                           |   14 +
+|  Events/Balrog.cpp                                 |    8 +
+|  Events/Balrog.h                                   |   20 +
+|  Events/Encounter.cpp                              |   25 +
+|  Events/Encounter.h                                |   32 +
+|  Events/Event.cpp                                  |    8 +
+|  Events/Event.h                                    |    8 +-
+|  Events/Pack.cpp                                   |   32 +
+|  Events/Pack.h                                     |   22 +
+|  Events/PotionsMerchant.cpp                        |   13 +
+|  Events/PotionsMerchant.h                          |   18 +
+|  Events/Slime.cpp                                  |    3 +
+|  Events/Slime.h                                    |   17 +
+|  Events/Snail.cpp                                  |    3 +
+|  Events/Snail.h                                    |   17 +
+|  Events/SolarEclipse.cpp                           |   13 +
+|  Events/SolarEclipse.h                             |   19 +
+|  Events/SpecialEvent.cpp                           |    8 +
+|  Events/SpecialEvent.h                             |   16 +
+|  Players/.idea/.gitignore                          |    8 +
+|  Players/.idea/Players.iml                         |    2 +
+|  Players/.idea/misc.xml                            |    4 +
+|  Players/.idea/modules.xml                         |    8 +
+|  Players/.idea/vcs.xml                             |    6 +
+|  Players/Archer.cpp                                |    4 +
+|  Players/Archer.h                                  |   12 +
+|  Players/CMakeLists.txt                            |   24 +
+|  Players/Character.cpp                             |    9 +
+|  Players/Character.h                               |   19 +
+|  Players/Job.cpp                                   |    9 +
+|  Players/Job.h                                     |   19 +
+|  Players/Magician.cpp                              |    4 +
+|  Players/Magician.h                                |   12 +
+|  Players/Player.cpp                                |   94 ++
+|  Players/Player.h                                  |   35 +
+|  Players/Responsible.cpp                           |    3 +
+|  Players/Responsible.h                             |   12 +
+|  Players/RiskTaking.cpp                            |    3 +
+|  Players/RiskTaking.h                              |   12 +
+|  Players/Warrior.cpp                               |    4 +
+|  Players/Warrior.h                                 |   12 +
+|  .../.cmake/api/v1/query/cache-v2                  |    0
+|  .../.cmake/api/v1/query/cmakeFiles-v1             |    0
+|  .../.cmake/api/v1/query/codemodel-v2              |    0
+|  .../.cmake/api/v1/query/toolchains-v1             |    0
+|  .../v1/reply/cache-v2-90a57011d2bcb525eb76.json   | 1327 +++++++++++++++++++
+|  .../reply/cmakeFiles-v1-1dd3aec2e7beb6c84ac4.json |  793 +++++++++++
+|  .../reply/codemodel-v2-95a9b21add6807fddd38.json  |   60 +
+|  .../directory-.-Debug-d0094a50bb2071803777.json   |   14 +
+|  .../v1/reply/index-2024-08-03T02-18-33-0248.json  |  108 ++
+|  ...target-Players-Debug-41173564debe5b1fb852.json |  230 ++++
+|  .../reply/toolchains-v1-c966953c01b61b3b683a.json |   93 ++
+|  Players/cmake-build-debug/CMakeCache.txt          |  415 ++++++
+|  .../CMakeFiles/3.27.8/CMakeCCompiler.cmake        |   74 ++
+|  .../CMakeFiles/3.27.8/CMakeCXXCompiler.cmake      |   85 ++
+|  .../3.27.8/CMakeDetermineCompilerABI_C.bin        |  Bin 0 -> 43069 bytes
+|  .../3.27.8/CMakeDetermineCompilerABI_CXX.bin      |  Bin 0 -> 43088 bytes
+|  .../CMakeFiles/3.27.8/CMakeRCCompiler.cmake       |    6 +
+|  .../CMakeFiles/3.27.8/CMakeSystem.cmake           |   15 +
+|  .../3.27.8/CompilerIdC/CMakeCCompilerId.c         |  866 ++++++++++++
+|  .../CMakeFiles/3.27.8/CompilerIdC/a.exe           |  Bin 0 -> 43144 bytes
+|  .../3.27.8/CompilerIdCXX/CMakeCXXCompilerId.cpp   |  855 ++++++++++++
+|  .../CMakeFiles/3.27.8/CompilerIdCXX/a.exe         |  Bin 0 -> 43172 bytes
+|  .../CMakeFiles/CMakeConfigureLog.yaml             |  417 ++++++
+|  .../CMakeFiles/TargetDirectories.txt              |    3 +
+|  .../CMakeFiles/clion-Debug-log.txt                |   16 +
+|  .../CMakeFiles/clion-environment.txt              |    4 +
+|  .../CMakeFiles/cmake.check_cache                  |    1 +
+|  Players/cmake-build-debug/CMakeFiles/rules.ninja  |   64 +
+|  .../Testing/Temporary/LastTest.log                |    3 +
+|  Players/cmake-build-debug/build.ninja             |  213 +++
+|  Players/cmake-build-debug/cmake_install.cmake     |   49 +
+|  cmake-build-debug/.cmake/api/v1/query/cache-v2    |    0
+|  .../.cmake/api/v1/query/cmakeFiles-v1             |    0
+|  .../.cmake/api/v1/query/codemodel-v2              |    0
+|  .../.cmake/api/v1/query/toolchains-v1             |    0
+|  .../v1/reply/cache-v2-b5dbc074dc5306dede22.json   | 1327 +++++++++++++++++++
+|  .../reply/cmakeFiles-v1-1c6ddc6fb0b937560ec8.json |  165 +++
+|  .../reply/codemodel-v2-2f5c60986b95ceb3a550.json  |   60 +
+|  .../directory-.-Debug-d0094a50bb2071803777.json   |   14 +
+|  .../v1/reply/index-2024-08-03T01-57-47-0390.json  |  108 ++
+|  .../target-HW4-Debug-4af261aaea7eedeaca04.json    |  412 ++++++
+|  .../reply/toolchains-v1-c966953c01b61b3b683a.json |   93 ++
+|  cmake-build-debug/.ninja_deps                     |  Bin 0 -> 24680 bytes
+|  cmake-build-debug/.ninja_log                      |   11 +
+|  cmake-build-debug/CMakeCache.txt                  |  415 ++++++
+|  .../CMakeFiles/3.27.8/CMakeCCompiler.cmake        |   74 ++
+|  .../CMakeFiles/3.27.8/CMakeCXXCompiler.cmake      |   85 ++
+|  .../3.27.8/CMakeDetermineCompilerABI_C.bin        |  Bin 0 -> 43069 bytes
+|  .../3.27.8/CMakeDetermineCompilerABI_CXX.bin      |  Bin 0 -> 43088 bytes
+|  .../CMakeFiles/3.27.8/CMakeRCCompiler.cmake       |    6 +
+|  .../CMakeFiles/3.27.8/CMakeSystem.cmake           |   15 +
+|  .../3.27.8/CompilerIdC/CMakeCCompilerId.c         |  866 ++++++++++++
+|  .../CMakeFiles/3.27.8/CompilerIdC/a.exe           |  Bin 0 -> 43144 bytes
+|  .../3.27.8/CompilerIdCXX/CMakeCXXCompilerId.cpp   |  855 ++++++++++++
+|  .../CMakeFiles/3.27.8/CompilerIdCXX/a.exe         |  Bin 0 -> 43172 bytes
+|  .../CMakeFiles/CMakeConfigureLog.yaml             |  834 ++++++++++++
+|  .../CMakeFiles/HW4.dir/MatamStory.cpp.obj         |  Bin 0 -> 66044 bytes
+|  .../CMakeFiles/HW4.dir/Players/Archer.cpp.obj     |  Bin 0 -> 80347 bytes
+|  .../CMakeFiles/HW4.dir/Players/Character.cpp.obj  |  Bin 0 -> 84820 bytes
+|  .../CMakeFiles/HW4.dir/Players/Job.cpp.obj        |  Bin 0 -> 84468 bytes
+|  .../CMakeFiles/HW4.dir/Players/Magician.cpp.obj   |  Bin 0 -> 80429 bytes
+|  .../CMakeFiles/HW4.dir/Players/Player.cpp.obj     |  Bin 0 -> 189883 bytes
+|  .../CMakeFiles/HW4.dir/Players/Warrior.cpp.obj    |  Bin 0 -> 80388 bytes
+|  .../CMakeFiles/HW4.dir/Utilities.cpp.obj          |  Bin 0 -> 105217 bytes
+|  cmake-build-debug/CMakeFiles/HW4.dir/main.cpp.obj |  Bin 0 -> 69476 bytes
+|  .../CMakeFiles/TargetDirectories.txt              |    3 +
+|  cmake-build-debug/CMakeFiles/clion-Debug-log.txt  |    4 +
+|  .../CMakeFiles/clion-environment.txt              |    4 +
+|  cmake-build-debug/CMakeFiles/cmake.check_cache    |    1 +
+|  cmake-build-debug/CMakeFiles/rules.ninja          |   64 +
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |    3 +
+|  cmake-build-debug/build.ninja                     |  280 ++++
+|  cmake-build-debug/cmake_install.cmake             |   49 +
+|  120 files changed, 12147 insertions(+), 1 deletion(-)
+| 
+* commit 6d0b58bcecef6fc2291c09f654a978cc382c3e31
+| Author: AdiHarif <adi.harif@campus.technion.ac.il>
+| Date:   Mon Jul 29 21:47:45 2024 +0300
+| 
+|     Adds supplied files
+| 
+|  Events/Event.h       |  14 +++++
+|  MatamStory.cpp       |  74 +++++++++++++++++++++++++
+|  MatamStory.h         |  55 +++++++++++++++++++
+|  Players/Player.h     |  51 +++++++++++++++++
+|  Utilities.cpp        | 117 +++++++++++++++++++++++++++++++++++++++
+|  Utilities.h          | 146 +++++++++++++++++++++++++++++++++++++++++++++++++
+|  main.cpp             |  40 ++++++++++++++
+|  tests/test1.events   |   5 ++
+|  tests/test1.expected |  96 ++++++++++++++++++++++++++++++++
+|  tests/test1.players  |   3 +
+|  tests/test2.events   |   4 ++
+|  tests/test2.expected |   1 +
+|  tests/test2.players  |   3 +
+|  tests/test3.events   |   5 ++
+|  tests/test3.expected |   1 +
+|  tests/test3.players  |   2 +
+|  16 files changed, 617 insertions(+)
+| 
+* commit beadb33ed4c7dd2da9d4078b9de6253232c67a46
+  Author: AdiHarif <adi.harif@campus.technion.ac.il>
+  Date:   Mon Jul 29 21:46:59 2024 +0300
+  
+      Initial Commit - Adds README.md file
+  
+   README.md | 7 +++++++
+   1 file changed, 7 insertions(+)
